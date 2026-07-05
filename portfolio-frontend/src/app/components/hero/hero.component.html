@@ -1,0 +1,44 @@
+<section class="hero">
+  <div class="hero-text">
+    <p class="eyebrow">// SOFTWARE DEVELOPER</p>
+    <h1>{{ profile?.name ?? 'Loading name…' }}</h1>
+    <p class="hero-title" *ngIf="profile">{{ profile.title }}</p>
+    <p class="hero-summary" *ngIf="profile">{{ profile.summary }}</p>
+
+    <div class="hero-meta" *ngIf="profile">
+      <span>{{ profile.location }}</span>
+      <span class="dot-sep">·</span>
+      <a [href]="'mailto:' + profile.email">{{ profile.email }}</a>
+      <span class="dot-sep">·</span>
+      <span>{{ profile.phone }}</span>
+    </div>
+
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">Get in touch</a>
+      <a href="#projects" class="btn btn-ghost">See the work</a>
+    </div>
+  </div>
+
+  <div class="pipeline" role="img" aria-label="Data pipeline diagram: Ingest, Validate, Transform, Load, Serve">
+    <svg viewBox="0 0 640 160" xmlns="http://www.w3.org/2000/svg" class="pipeline-svg">
+      <line x1="40" y1="80" x2="600" y2="80" class="pipeline-track" />
+
+      <circle cx="40" cy="80" r="7" class="pipeline-node" />
+      <circle cx="180" cy="80" r="7" class="pipeline-node" />
+      <circle cx="320" cy="80" r="7" class="pipeline-node" />
+      <circle cx="460" cy="80" r="7" class="pipeline-node" />
+      <circle cx="600" cy="80" r="7" class="pipeline-node" />
+
+      <circle r="5" class="pipeline-pulse">
+        <animateMotion dur="4.5s" repeatCount="indefinite"
+          path="M40,80 L180,80 L320,80 L460,80 L600,80" />
+      </circle>
+
+      <text x="40" y="115" class="pipeline-label">INGEST</text>
+      <text x="180" y="115" class="pipeline-label">VALIDATE</text>
+      <text x="320" y="115" class="pipeline-label">TRANSFORM</text>
+      <text x="460" y="115" class="pipeline-label">LOAD</text>
+      <text x="600" y="115" class="pipeline-label pipeline-label-end">SERVE</text>
+    </svg>
+  </div>
+</section>

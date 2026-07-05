@@ -1,0 +1,5 @@
+.about-text {
+  color: var(--ink-soft);
+  max-width: 720px;
+  font-size: 1.05rem;
+}

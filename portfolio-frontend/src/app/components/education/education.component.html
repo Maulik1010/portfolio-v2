@@ -1,0 +1,11 @@
+<section id="education" class="section">
+  <p class="section-eyebrow">05 / Education</p>
+  <h2 class="section-title">Education</h2>
+
+  <div class="education-list" *ngIf="education">
+    <div class="education-item" *ngFor="let edu of education">
+      <h3>{{ edu.degree }}</h3>
+      <div class="education-meta">{{ edu.school }} — {{ edu.dates }}</div>
+    </div>
+  </div>
+</section>

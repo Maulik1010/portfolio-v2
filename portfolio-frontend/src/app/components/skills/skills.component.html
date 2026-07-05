@@ -1,0 +1,13 @@
+<section id="skills" class="section">
+  <p class="section-eyebrow">02 / Skills</p>
+  <h2 class="section-title">Technical Skills</h2>
+
+  <div class="skills-grid" *ngIf="skills">
+    <div class="skill-card" *ngFor="let category of skills | keyvalue">
+      <h3>{{ category.key }}</h3>
+      <div class="skill-tags">
+        <span class="skill-tag" *ngFor="let item of category.value">{{ item }}</span>
+      </div>
+    </div>
+  </div>
+</section>

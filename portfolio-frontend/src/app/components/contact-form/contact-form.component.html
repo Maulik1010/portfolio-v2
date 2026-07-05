@@ -1,0 +1,36 @@
+<section class="section section-contact">
+  <p class="section-eyebrow">06 / Contact</p>
+  <h2 class="section-title">Let's build something</h2>
+  <p class="contact-intro">Have a role, project, or question in mind? Send a message and I'll get back to you.</p>
+
+  <form #contactNgForm="ngForm" class="contact-form" (ngSubmit)="onSubmit(contactNgForm)" novalidate>
+    <div class="form-row">
+      <label for="name">Name</label>
+      <input
+        type="text" id="name" name="name" required maxlength="100"
+        [(ngModel)]="model.name" #nameField="ngModel" />
+    </div>
+
+    <div class="form-row">
+      <label for="email">Email</label>
+      <input
+        type="email" id="email" name="email" required email
+        [(ngModel)]="model.email" #emailField="ngModel" />
+    </div>
+
+    <div class="form-row">
+      <label for="message">Message</label>
+      <textarea
+        id="message" name="message" rows="5" required maxlength="3000"
+        [(ngModel)]="model.message" #messageField="ngModel"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="submitting">
+      {{ submitting ? 'Sending…' : 'Send message' }}
+    </button>
+
+    <p class="form-status" [ngClass]="statusType" role="status" aria-live="polite">
+      {{ statusMessage }}
+    </p>
+  </form>
+</section>
