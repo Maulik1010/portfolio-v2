@@ -1,0 +1,74 @@
+.hero {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 80px 24px 40px;
+  display: grid;
+  gap: 32px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  color: var(--accent-teal);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  margin: 0 0 16px;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.hero-title {
+  font-family: var(--font-mono);
+  color: var(--accent-amber);
+  font-size: 1rem;
+  margin: 0 0 20px;
+}
+
+.hero-summary {
+  color: var(--ink-soft);
+  max-width: 640px;
+  font-size: 1.05rem;
+  margin: 0 0 20px;
+}
+
+.hero-meta {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  margin-bottom: 28px;
+}
+
+.dot-sep { margin: 0 10px; color: var(--line-blue); }
+
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+.pipeline {
+  border: 1px solid var(--line-blue);
+  border-radius: 10px;
+  background: var(--bg-raised);
+  padding: 24px 12px 12px;
+}
+
+.pipeline-svg { width: 100%; height: auto; display: block; }
+
+.pipeline-track { stroke: var(--line-blue); stroke-width: 2; }
+
+.pipeline-node {
+  fill: var(--bg-raised);
+  stroke: var(--accent-teal);
+  stroke-width: 2;
+}
+
+.pipeline-pulse { fill: var(--accent-amber); }
+
+.pipeline-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--ink-faint);
+  text-anchor: middle;
+}
+
+.pipeline-label-end { fill: var(--accent-teal); }

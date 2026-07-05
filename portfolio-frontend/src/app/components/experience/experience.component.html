@@ -1,0 +1,14 @@
+<section id="experience" class="section">
+  <p class="section-eyebrow">03 / Experience</p>
+  <h2 class="section-title">Experience</h2>
+
+  <div class="timeline" *ngIf="experience">
+    <div class="timeline-item" *ngFor="let job of experience">
+      <div class="timeline-role">{{ job.role }} · {{ job.company }}</div>
+      <div class="timeline-meta">{{ job.location }} — {{ job.dates }}</div>
+      <ul class="timeline-bullets">
+        <li *ngFor="let bullet of job.bullets">{{ bullet }}</li>
+      </ul>
+    </div>
+  </div>
+</section>

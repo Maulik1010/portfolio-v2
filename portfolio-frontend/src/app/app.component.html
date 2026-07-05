@@ -1,0 +1,35 @@
+<div class="site-shell">
+
+  <header class="site-header">
+    <nav class="nav">
+      <span class="nav-mark">MP</span>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <app-hero [profile]="profile"></app-hero>
+
+    <p *ngIf="loadError" class="load-error">
+      Couldn't reach the backend API. Make sure the Spring Boot app is running on
+      <code>http://localhost:8080</code>.
+    </p>
+
+    <app-about [summary]="profile?.summary ?? null"></app-about>
+    <app-skills [skills]="profile?.skills ?? null"></app-skills>
+    <app-experience [experience]="profile?.experience ?? null"></app-experience>
+    <app-projects [projects]="profile?.projects ?? null"></app-projects>
+    <app-education [education]="profile?.education ?? null"></app-education>
+    <app-contact-form id="contact"></app-contact-form>
+  </main>
+
+  <app-site-footer [name]="profile?.name ?? 'Maulik Prajapati'"></app-site-footer>
+
+</div>

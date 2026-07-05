@@ -1,0 +1,109 @@
+/* ==========================================================================
+   Global design tokens & base styles (blueprint / schematic theme)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #0E2337;
+  --bg-raised: #123049;
+  --bg-card: #16344F;
+  --grid-line: rgba(151, 197, 221, 0.07);
+  --line-blue: #2C5C82;
+  --ink: #EAF1F5;
+  --ink-soft: #9FB6C7;
+  --ink-faint: #6B8399;
+  --accent-amber: #E3A857;
+  --accent-teal: #5FBDB0;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-body: 'Inter', sans-serif;
+
+  --max-width: 1080px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-attachment: fixed;
+}
+
+a { color: var(--accent-teal); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+:focus-visible {
+  outline: 2px solid var(--accent-amber);
+  outline-offset: 3px;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  margin: 0;
+}
+
+.btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 12px 22px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: var(--accent-amber);
+  color: #17222b;
+}
+.btn-primary:hover { background: #eeb96c; text-decoration: none; }
+.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--line-blue);
+  color: var(--ink);
+}
+.btn-ghost:hover { border-color: var(--accent-teal); text-decoration: none; }
+
+.section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 64px 24px;
+  border-top: 1px solid var(--line-blue);
+}
+
+.section-eyebrow {
+  font-family: var(--font-mono);
+  color: var(--ink-faint);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  margin: 0 0 10px;
+}
+
+.section-title {
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  margin-bottom: 28px;
+}
