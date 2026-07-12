@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Maulik Prajapati — Personal Profile Site (Angular + Spring Boot + MySQL)
 
 ```
@@ -117,3 +118,6 @@ Vercel, GitHub Pages, S3, etc.), and update `environment.prod.ts` with your real
 - The backend could not be compiled/tested in the environment this was generated in (no access to
   Maven Central or a MySQL instance there), so run `mvn spring-boot:run` on your machine to confirm
   it starts cleanly, and double check your MySQL credentials in `application.properties`.
+=======
+
+>>>>>>> 706f0a49de2c17a9bf9ec3ff65656f17216a8aab
