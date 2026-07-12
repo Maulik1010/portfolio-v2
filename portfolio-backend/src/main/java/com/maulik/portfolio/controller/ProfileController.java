@@ -64,24 +64,15 @@ public class ProfileController {
             ),
             List.of(
                     new ProfileData.Project(
-                            "Customer Data Pipeline",
-                            "Designed an ETL pipeline to ingest, transform, and load customer transaction data for reporting purposes.",
-                            List.of("Java", "Spring Boot", "PostgreSQL")
-                    ),
-                    new ProfileData.Project(
-                            "Kafka Event Processing System",
-                            "Developed a producer-consumer application using Apache Kafka to process real-time order events and update downstream services.",
-                            List.of("Java", "Apache Kafka")
-                    ),
-                    new ProfileData.Project(
-                            "SQL Data Warehouse Project",
-                            "Created a reporting database using dimensional modeling concepts and optimized analytical queries for dashboard generation.",
-                            List.of("SQL", "Data Modeling")
-                    ),
-                    new ProfileData.Project(
-                            "Data Analytics Dashboard",
-                            "Built SQL-based reporting solutions and Power BI dashboards to visualize operational and business metrics.",
-                            List.of("SQL", "Power BI")
+                            "Personal Portfolio Site",
+                            "A full-stack personal portfolio built to showcase my projects, skills, and experience. "
+                                    + "The frontend is built with Angular 17 using standalone components for a modular, "
+                                    + "maintainable structure, while the backend is a Spring Boot REST API backed by "
+                                    + "MySQL for dynamic content. Includes a working contact form that emails messages "
+                                    + "directly and persists them to the database.",
+                            List.of("Angular", "Spring Boot", "MySQL", "Java 17", "REST API"),
+                            "https://maulik1010.github.io/portfolio-v2/",
+                            "https://github.com/Maulik1010/portfolio-v2"
                     )
             ),
             List.of(

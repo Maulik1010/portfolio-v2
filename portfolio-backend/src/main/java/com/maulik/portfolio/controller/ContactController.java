@@ -5,7 +5,12 @@ import com.maulik.portfolio.dto.ContactRequest;
 import com.maulik.portfolio.model.ContactMessage;
 import com.maulik.portfolio.repository.ContactMessageRepository;
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,20 +24,24 @@ import java.util.List;
 @RequestMapping("/api/contact")
 public class ContactController {
 
-    private final ContactMessageRepository contactMessageRepository;
+    private static final Logger log = LoggerFactory.getLogger(ContactController.class);
 
-    public ContactController(ContactMessageRepository contactMessageRepository) {
+    private final ContactMessageRepository contactMessageRepository;
+    private final JavaMailSender mailSender;
+
+    @Value("${portfolio.contact.notify-email}")
+    private String notifyEmail;
+
+    public ContactController(ContactMessageRepository contactMessageRepository, JavaMailSender mailSender) {
         this.contactMessageRepository = contactMessageRepository;
+        this.mailSender = mailSender;
     }
 
     /**
-     * Saves a contact form submission to the database.
-     *
-     * NOTE: This currently persists messages to the H2 database only.
-     * If you want messages emailed to you as well, add spring-boot-starter-mail,
-     * configure your SMTP provider's credentials in application.properties,
-     * and call a JavaMailSender here. Credentials should come from environment
-     * variables, never hardcoded.
+     * Saves a contact form submission to the database and emails a notification.
+     * If email sending fails (e.g. SMTP misconfiguration), the message is still
+     * saved to the database and the user still gets a success response — a
+     * flaky mail provider shouldn't lose a genuine inquiry.
      */
     @PostMapping
     public ResponseEntity<ApiResponse> submitMessage(@Valid @RequestBody ContactRequest request) {
@@ -43,6 +52,24 @@ public class ContactController {
                 LocalDateTime.now()
         );
         contactMessageRepository.save(message);
+
+        try {
+            SimpleMailMessage mail = new SimpleMailMessage();
+            mail.setTo(notifyEmail);
+            mail.setReplyTo(request.getEmail());
+            mail.setSubject("Portfolio contact form: " + request.getName());
+            mail.setText(
+                    "New message from your portfolio site:\n\n"
+                            + "Name: " + request.getName() + "\n"
+                            + "Email: " + request.getEmail() + "\n\n"
+                            + request.getMessage()
+            );
+            mailSender.send(mail);
+        } catch (Exception e) {
+            // Don't fail the request just because email delivery had an issue —
+            // the message is already safely saved in the database above.
+            log.error("Failed to send contact-form notification email", e);
+        }
 
         return ResponseEntity.ok(
                 new ApiResponse(true, "Thanks for reaching out! I'll get back to you soon.")

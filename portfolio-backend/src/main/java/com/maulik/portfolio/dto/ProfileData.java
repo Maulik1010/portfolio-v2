@@ -17,8 +17,8 @@ public class ProfileData {
     private List<Education> education;
 
     public ProfileData(String name, String title, String location, String email, String phone,
-                        String summary, Map<String, List<String>> skills,
-                        List<Experience> experience, List<Project> projects, List<Education> education) {
+                       String summary, Map<String, List<String>> skills,
+                       List<Experience> experience, List<Project> projects, List<Education> education) {
         this.name = name;
         this.title = title;
         this.location = location;
@@ -111,11 +111,15 @@ public class ProfileData {
         private String title;
         private String description;
         private List<String> tech;
+        private String liveUrl;
+        private String githubUrl;
 
-        public Project(String title, String description, List<String> tech) {
+        public Project(String title, String description, List<String> tech, String liveUrl, String githubUrl) {
             this.title = title;
             this.description = description;
             this.tech = tech;
+            this.liveUrl = liveUrl;
+            this.githubUrl = githubUrl;
         }
 
         public String getTitle() {
@@ -128,6 +132,14 @@ public class ProfileData {
 
         public List<String> getTech() {
             return tech;
+        }
+
+        public String getLiveUrl() {
+            return liveUrl;
+        }
+
+        public String getGithubUrl() {
+            return githubUrl;
         }
     }
 

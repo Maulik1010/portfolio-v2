@@ -6,9 +6,8 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * Allows the Angular dev server (ng serve, default port 4200) to call this
- * API during development. Update allowedOrigins to your real domain before
- * deploying to production.
+ * Allows both the local Angular dev server (ng serve, port 4200) and the
+ * live GitHub Pages site to call this API.
  */
 @Configuration
 public class CorsConfig implements WebMvcConfigurer {
@@ -19,7 +18,10 @@ public class CorsConfig implements WebMvcConfigurer {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**")
-                        .allowedOrigins("http://localhost:4200")
+                        .allowedOrigins(
+                                "http://localhost:4200",
+                                "https://maulik1010.github.io"
+                        )
                         .allowedMethods("GET", "POST", "OPTIONS")
                         .allowedHeaders("*");
             }
